@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		49D0007922547B1000C044D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0007822547B1000C044D2 /* AppDelegate.swift */; };
 		49D0007B22547B1000C044D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D0007A22547B1000C044D2 /* ViewController.swift */; };
-		49D0007E22547B1000C044D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D0007C22547B1000C044D2 /* Main.storyboard */; };
 		49D0008022547B1200C044D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49D0007F22547B1200C044D2 /* Assets.xcassets */; };
 		49D0008322547B1200C044D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D0008122547B1200C044D2 /* LaunchScreen.storyboard */; };
+		49D000912254800A00C044D2 /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D000902254800A00C044D2 /* AppService.swift */; };
+		49D00093225482B200C044D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49D00092225482B200C044D2 /* GoogleService-Info.plist */; };
+		49D000952254846200C044D2 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D000942254846200C044D2 /* AuthService.swift */; };
+		49D000972254849300C044D2 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D000962254849300C044D2 /* Services.swift */; };
+		49D0009A2254860200C044D2 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D000992254860200C044D2 /* UIView+Extension.swift */; };
 		E55AD4E2C790CB37873EA1AC /* Pods_FirebaseAuthMigrationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB378685C0F6AAACDCB26EB /* Pods_FirebaseAuthMigrationApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,10 +24,14 @@
 		49D0007522547B1000C044D2 /* FirebaseAuthMigrationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseAuthMigrationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D0007822547B1000C044D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49D0007A22547B1000C044D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		49D0007D22547B1000C044D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49D0007F22547B1200C044D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49D0008222547B1200C044D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49D0008422547B1200C044D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49D000902254800A00C044D2 /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
+		49D00092225482B200C044D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		49D000942254846200C044D2 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		49D000962254849300C044D2 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		49D000992254860200C044D2 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		80F4C4B20C367E0BA36FBF68 /* Pods-FirebaseAuthMigrationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthMigrationApp.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseAuthMigrationApp/Pods-FirebaseAuthMigrationApp.debug.xcconfig"; sourceTree = "<group>"; };
 		C15B5BBDA1FD101B09CCDE32 /* Pods-FirebaseAuthMigrationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseAuthMigrationApp.release.xcconfig"; path = "Target Support Files/Pods-FirebaseAuthMigrationApp/Pods-FirebaseAuthMigrationApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -46,7 +54,6 @@
 				80F4C4B20C367E0BA36FBF68 /* Pods-FirebaseAuthMigrationApp.debug.xcconfig */,
 				C15B5BBDA1FD101B09CCDE32 /* Pods-FirebaseAuthMigrationApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -71,14 +78,74 @@
 		49D0007722547B1000C044D2 /* FirebaseAuthMigrationApp */ = {
 			isa = PBXGroup;
 			children = (
+				49D0008A22547F9D00C044D2 /* Code */,
 				49D0007822547B1000C044D2 /* AppDelegate.swift */,
-				49D0007A22547B1000C044D2 /* ViewController.swift */,
-				49D0007C22547B1000C044D2 /* Main.storyboard */,
+				49D00092225482B200C044D2 /* GoogleService-Info.plist */,
 				49D0007F22547B1200C044D2 /* Assets.xcassets */,
 				49D0008122547B1200C044D2 /* LaunchScreen.storyboard */,
 				49D0008422547B1200C044D2 /* Info.plist */,
 			);
 			path = FirebaseAuthMigrationApp;
+			sourceTree = "<group>";
+		};
+		49D0008A22547F9D00C044D2 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				49D00098225485F500C044D2 /* Extensions */,
+				49D0008F22547FE400C044D2 /* Services */,
+				49D0008E22547FBF00C044D2 /* Controllers */,
+				49D0008D22547FB800C044D2 /* Models */,
+				49D0008C22547FAD00C044D2 /* ViewModels */,
+				49D0008B22547FA600C044D2 /* Views */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		49D0008B22547FA600C044D2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49D0008C22547FAD00C044D2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		49D0008D22547FB800C044D2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		49D0008E22547FBF00C044D2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49D0007A22547B1000C044D2 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		49D0008F22547FE400C044D2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				49D000902254800A00C044D2 /* AppService.swift */,
+				49D000942254846200C044D2 /* AuthService.swift */,
+				49D000962254849300C044D2 /* Services.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		49D00098225485F500C044D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49D000992254860200C044D2 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4EC612FCDBB422B9027189DE /* Frameworks */ = {
@@ -152,7 +219,7 @@
 			files = (
 				49D0008322547B1200C044D2 /* LaunchScreen.storyboard in Resources */,
 				49D0008022547B1200C044D2 /* Assets.xcassets in Resources */,
-				49D0007E22547B1000C044D2 /* Main.storyboard in Resources */,
+				49D00093225482B200C044D2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,11 +287,9 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -236,11 +301,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -254,22 +317,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D0009A2254860200C044D2 /* UIView+Extension.swift in Sources */,
+				49D000972254849300C044D2 /* Services.swift in Sources */,
 				49D0007B22547B1000C044D2 /* ViewController.swift in Sources */,
+				49D000912254800A00C044D2 /* AppService.swift in Sources */,
 				49D0007922547B1000C044D2 /* AppDelegate.swift in Sources */,
+				49D000952254846200C044D2 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		49D0007C22547B1000C044D2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				49D0007D22547B1000C044D2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		49D0008122547B1200C044D2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -408,7 +467,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tv.cchan.FirebaseAuthMigrationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = tv.cchan.firebaseauthmigrationapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -426,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tv.cchan.FirebaseAuthMigrationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = tv.cchan.firebaseauthmigrationapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
