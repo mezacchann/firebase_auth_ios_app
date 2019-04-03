@@ -141,6 +141,12 @@ struct AuthService {
         }
     }
     
+    
+    func isRegisteredWithFacebookSDK() -> Bool {
+        guard let token = FBSDKAccessToken.current() else { return false }
+        return !token.isExpired
+    }
+    
     func registerWithFacebookSDK(_ viewController: UIViewController, completion: @escaping (Result<FBSDKAccessToken>)->()) {
         let manager = FBSDKLoginManager()
         manager.logOut()
@@ -155,11 +161,6 @@ struct AuthService {
             
             return completion(Result.success(result: result.token!))
         }
-    }
-    
-    func isRegisteredWithFacebookSDK() -> Bool {
-        guard let token = FBSDKAccessToken.current() else { return false }
-        return !token.isExpired
     }
     
     func signInWithFacebook(completion: @escaping (Result<AuthDataResult>)->()) {
