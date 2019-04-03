@@ -80,6 +80,11 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - RxAtomic (4.4.1)
+  - RxCocoa (4.4.1):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.4.1):
+    - RxAtomic (~> 4.4)
   - TwitterCore (3.2.0)
   - TwitterKit (3.4.2):
     - TwitterCore (>= 3.2.0)
@@ -89,6 +94,8 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - GoogleSignIn
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - TwitterKit
 
 SPEC REPOS:
@@ -108,6 +115,9 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - nanopb
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
     - TwitterCore
     - TwitterKit
 
@@ -127,9 +137,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
+  RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
+  RxSwift: 92fcf68dfef21f3e2ab1965363d9e7b3d787597e
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: b02e20cfaf623b68716fca1fbfecd6f96bd1f9aa
+PODFILE CHECKSUM: c32cd58902ebfc7d7167fd40cce5176b10e1eb88
 
 COCOAPODS: 1.6.0
