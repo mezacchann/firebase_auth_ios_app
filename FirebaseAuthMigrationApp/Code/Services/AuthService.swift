@@ -104,7 +104,6 @@ enum AuthError: Error {
     case userCancelledSignIn
 }
 
-
 struct AuthService {
     
     private let email = "test@cchan.tv"
