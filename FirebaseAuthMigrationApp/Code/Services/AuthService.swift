@@ -93,6 +93,7 @@
 import Foundation
 import Firebase
 import FBSDKLoginKit
+import LineSDK
 
 enum Result<T> {
     case success(result: T)
@@ -173,6 +174,30 @@ struct AuthService {
             }
             completion(Result.success(result: result))
         })
+    }
+    
+    func registerWithLineSDK(_ viewController: UIViewController, completion: @escaping (Result<LoginResult>)->()) {
+        LoginManager.shared.login(permissions: [.profile], in: viewController) { result in
+            switch result {
+            case .success(let loginResult):
+                completion(.success(result: loginResult))
+            case .failure(let error):
+                completion(.error(error: error))
+            }
+        }
+    }
+    
+    func signInWithLine(completion: @escaping (Result<AuthDataResult>)->()) {
+        guard let token = AccessTokenStore.shared.current else {
+            return completion(.error(error: AuthError.noUserSignedIn))
+        }
+        print(token)
+        Auth.auth().signIn(withCustomToken: token.value) { result, error in
+            guard error == nil, let result = result else {
+                return completion(Result.error(error: error))
+            }
+            completion(Result.success(result: result))
+        }
     }
     
     func linkAccountWithProvider(credentials: AuthCredential, completion: @escaping (Result<AuthDataResult>)->()) {

@@ -2,11 +2,24 @@ import UIKit
 import Firebase
 import RxSwift
 import RxCocoa
+import LineSDK
 
 class ViewController: UIViewController {
     
+    let lineSignInButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .green
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 16
+        button.setTitle("Sign in with Line", for: .normal)
+        return button
+    }()
+    
     let facebookSignInButton: UIButton = {
         let button = UIButton(type: .system)
+        button.backgroundColor = .blue
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 16
         button.setTitle("Sign in with Facebook", for: .normal)
         return button
     }()
@@ -17,22 +30,46 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         
         setupSubviews()
+        setupListeners()
         setupLogic()
     }
     
     private func setupSubviews() {
-        view.addSubview(facebookSignInButton)
-        facebookSignInButton.anchorCenterSuperview()
-        facebookSignInButton.anchor(size: CGSize(width: 0, height: 100))
+        let stackView = UIStackView(arrangedSubviews: [lineSignInButton, facebookSignInButton])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 16
+        view.addSubview(stackView)
+        
+        lineSignInButton.anchor(size: CGSize(width: 200, height: 50))
+        facebookSignInButton.anchor(size: CGSize(width: 200, height: 50))
+        stackView.anchorCenterSuperview()
+    }
+    
+    private func setupListeners() {
         facebookSignInButton
             .rx
             .tap
             .subscribe { [weak self] _ in
                 guard let strongSelf = self else { return }
-                Services.auth.signInWithFacebook(strongSelf) { result in
+                Services.auth.registerWithFacebookSDK(strongSelf) { result in
+                    if case let Result.error(error) = result {
+                        print("📬", error?.localizedDescription ?? "")
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        lineSignInButton
+            .rx
+            .tap
+            .subscribe { [weak self] _ in
+                guard let strongSelf = self else { return }
+                Services.auth.registerWithLineSDK(strongSelf) { result in
                     switch result {
-                    case .success(let result): print("📬", result.user.uid)
                     case .error(let error): print("📬", error?.localizedDescription ?? "")
+                    case .success(let result): print("📬", result)
                     }
                 }
             }
@@ -42,11 +79,11 @@ class ViewController: UIViewController {
     private func setupLogic() {
         
         
-        Services.auth.isSignIn { isSignIn in
-            if isSignIn {
-                try? Auth.auth().signOut()
-            }
-        }
+        //        Services.auth.isSignIn { isSignIn in
+        //            if isSignIn {
+        //                try? Auth.auth().signOut()
+        //            }
+        //        }
         
         //        Services.auth.signInAnonymously { result in
         //            switch result {
@@ -75,12 +112,12 @@ class ViewController: UIViewController {
         //            case .success(let result): print("📬:", result.user.uid)
         //            }
         //        }
-    }
-    
-    private func setupListeners() {
         
+        Services.auth.signInWithLine { result in
+            switch result {
+            case .error(let error): print("📬:" , error?.localizedDescription ?? "")
+            case .success(let result): print("📬:", result.user.uid)
+            }
+        }
     }
 }
-
-
-
