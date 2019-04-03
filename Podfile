@@ -1,14 +1,15 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 
 target 'FirebaseAuthMigrationApp' do
   # ログイン系のライブラリ
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
-  pod 'TwitterKit'
-  
+  pod 'LineSDKSwift', '~> 5.0'
+#  pod 'TwitterKit'
+#  pod 'GoogleSignIn'
+
   # Rx系のライブラリ
   pod 'RxSwift',    '~> 4.0' 
   pod 'RxCocoa',    '~> 4.0'
