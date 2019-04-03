@@ -1,7 +1,3 @@
-import Foundation
-import Firebase
-import FBSDKLoginKit
-
 /** Firebase Auth
  
  1. User is not sign in:
@@ -93,6 +89,10 @@ import FBSDKLoginKit
  // graph.facebook.com/___USER_FACEBOOK_ID___?fields=picture.width(720)
  
  */
+
+import Foundation
+import Firebase
+import FBSDKLoginKit
 
 enum Result<T> {
     case success(result: T)
