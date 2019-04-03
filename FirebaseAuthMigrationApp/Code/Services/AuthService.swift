@@ -141,7 +141,6 @@ struct AuthService {
         }
     }
     
-    
     func isRegisteredWithFacebookSDK() -> Bool {
         guard let token = FBSDKAccessToken.current() else { return false }
         return !token.isExpired
